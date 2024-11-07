@@ -4,7 +4,6 @@ import { promises as fs } from 'fs';
 
 export async function GET() {
 	try {
-		// Define the path to the products.json file in the public directory
 		const filePath = path.join(process.cwd(), 'public', 'products.json');
 
 		// Read and parse the file

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
-	const backendUrl = `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/redeem`;
+	const backendUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/coupons/redeem`;
 
 	const response = await fetch(backendUrl, {
 		method: 'POST',

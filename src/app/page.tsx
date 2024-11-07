@@ -1,20 +1,29 @@
 'use client';
-import { useEffect, useState } from 'react';
-import ProductList from '../components/ProductList';
+import React, { useEffect, useState } from 'react';
+import CartItem from '../components/CartItem';
+import { CartItemType } from '../types/CartItemType';
 
-export default function HomePage() {
-	const [products, setProducts] = useState([]);
+export default function CartPage() {
+	const [cart, setCart] = useState<CartItemType[]>([]);
 
 	useEffect(() => {
-		fetch('/products.json')
+		fetch('/api/products')
 			.then((res) => res.json())
-			.then((data) => setProducts(data));
+			.then((data) => setCart(data))
+			.catch((error) =>
+				console.error('Failed to fetch products:', error)
+			);
 	}, []);
 
 	return (
 		<div>
-			<h1>Products</h1>
-			<ProductList products={products} />
+			<h1>Shopping Cart</h1>
+			{cart.map((item) => (
+				<CartItem key={item.id} item={item} />
+			))}
+			<a href='/checkout' className='btn btn-primary'>
+				Proceed to Checkout
+			</a>
 		</div>
 	);
 }
