@@ -1,4 +1,14 @@
-const CouponForm = ({ couponCode, setCouponCode, onApply }) => (
+interface CouponFormProps {
+	couponCode: string;
+	setCouponCode: React.Dispatch<React.SetStateAction<string | undefined>>;
+	onApply: () => void;
+}
+
+const CouponForm = ({
+	couponCode,
+	setCouponCode,
+	onApply,
+}: CouponFormProps) => (
 	<div>
 		<input
 			type='text'

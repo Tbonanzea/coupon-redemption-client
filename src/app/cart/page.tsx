@@ -5,10 +5,14 @@ import { CartItemType } from '@/types/CartItem';
 
 export default function CartPage() {
 	const [cart, setCart] = useState<CartItemType[]>([]);
+
 	useEffect(() => {
-		fetch('/products')
+		fetch('/api/products')
 			.then((res) => res.json())
-			.then((data) => setCart(data));
+			.then((data) => setCart(data))
+			.catch((error) =>
+				console.error('Failed to fetch products:', error)
+			);
 	}, []);
 
 	return (

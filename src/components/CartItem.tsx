@@ -1,4 +1,10 @@
-const CartItem = ({ item }) => (
+import { CartItemType } from '@/types/CartItem';
+
+interface CartItemProps {
+	item: CartItemType;
+}
+
+const CartItem = ({ item }: CartItemProps) => (
 	<div className='card mb-3'>
 		<div className='card-body d-flex justify-content-between'>
 			<span>

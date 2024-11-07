@@ -1,4 +1,10 @@
-const ProductList = ({ products }) => (
+import { ProductType } from '@/types/ProductType';
+
+interface ProductListProps {
+	products: ProductType[];
+}
+
+const ProductList = ({ products }: ProductListProps) => (
 	<div className='row'>
 		{products.map((product) => (
 			<div key={product.id} className='col-md-4'>
